@@ -1,0 +1,45 @@
+<p>login works!</p>
+
+<div style="font-family: Calibri; padding: 20px; border: solid 1pt orange; width: 40%; display: inline-block; ">
+    <form #frm="ngForm" (ngSubmit)="save(frm)">
+  <div style="color: white; background-color: blue; text-align: center; padding: 8px;">
+    <h4>Login Page</h4>
+  </div>
+
+  <div style="padding-top: 3px;">
+    <div>
+      <div>Email</div>
+      <div><input ngModel #email="ngModel" type="text" id="txtEmail" name="txtEmail" class="form-control" required minlength="10" pattern="^[a-z]{1}\w+@\w+\.[a-z]{3}$"/></div>
+       <div style="color: red;" *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors?.['required']">Enter Email Id</div>
+          <div *ngIf="email.errors?.['pattern']">invalid Email Id</div>
+          <div *ngIf="email.errors?.['required']">Email shoud atleast be of {{email.errors?.['minlength']}} Charecters </div>
+        
+      </div>
+      <div *ngIf="email.touched && email.valid" style="color: green;">valid Email</div>
+    </div>
+   
+
+    <div>
+      <div>Password</div>
+      <input ngModel #pwd="ngModel" type="password" id="txtPwd" name="txtPwd" class="form-control" required />
+    
+    <div *ngIf="pwd.touched && pwd.invalid" style="color: red;">
+        <div *ngIf="pwd.errors?.['required']">Enter password</div>
+    </div>
+    </div>
+
+    <div >
+        <div style="display: inline-block; width: 45%;"><button type="reset" class="form-control btn btn-warning">Cancel</button></div>
+        <div style="display: inline-block; width: 45%;"><button [disabled]="!frm.valid" type="submit" class="form-control btn btn-primary">Login</button></div>
+      
+    </div>
+  </div>
+  <div>Message section</div>
+  </form>
+</div>
+<div style="width: 50%; padding: 20px; display: inline-block;margin: 10px; ">
+    <app-registration>
+
+    </app-registration>
+</div>
