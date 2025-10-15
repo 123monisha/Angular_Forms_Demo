@@ -1,0 +1,48 @@
+<p>registration works!</p>
+
+<div style="font-family: Calibri; padding: 20px; border: solid 1pt orange; width: 40%; ">
+    <form [formGroup]="regFrm">
+  <div style="color: white; background-color: blue; text-align: center; padding: 8px;">
+    <h4>Registration Page</h4>
+  </div>
+
+  <div style="padding-top: 3px;">
+    <div>
+      <div>Email</div>
+      <div><input  type="text" id="txtEmail" name="txtEmail" class="form-control" formControlName="email"/></div>
+          <div *ngIf="mail?.touched && regFrm.get('email')?.errors?.['required']" style="color: red;">
+        Kindly enter the Email Id
+    </div>
+<div>
+    <div>Mobile</div>
+    <div><input  formControlName="mobile" type="text" name="txtMob" 
+        id="txtMob" class="form-control" required/>
+    </div>
+    <div id="divError" style="color: red;" *ngIf="mob?.touched && mob?.invalid">
+        <div *ngIf="mob?.errors?.['required']">Enter Mobile Number</div>
+        <div *ngIf="mob?.errors?.['minlength']">Mobile no should of {{mob?.errors?.['minlength'].requiredLength}} digit</div>
+        <div *ngIf="mob?.errors?.['pattern']">Mobile number is invalid</div>
+    </div>
+</div>
+<div style="margin-top: 5px; margin-bottom: 5px;">
+    <div>Register Number</div>
+    <div><input formControlName="regNo"  type="text" name="txtRegNo" 
+        id="txtRegNo" class="form-control" required/>
+    </div>
+    <div style="color: red;" id="divError" 
+    *ngIf="regFrm.get('regNo')?.touched && regFrm.get('regNo')?.invalid">
+        <div *ngIf="regFrm.get('regNo')?.errors?.['required']">Enter Register Number</div>
+        <div *ngIf="regFrm.get('regNo')?.errors?.['isNumberEven']">This slot is for those with Even Register Number</div>
+    </div>
+</div>
+
+    <div >
+        <div style="display: inline-block; width: 45%;"><button type="reset" class="form-control btn btn-warning">Cancel</button></div>
+        <div style="display: inline-block; width: 45%;"><button  type="submit" class="form-control btn btn-primary">Login</button></div>
+      
+    </div>
+  </div>
+  <div>Message section</div>
+</div>
+  </form>
+</div>
